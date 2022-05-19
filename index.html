@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Library</title>
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <h1 class="text-center py-3">Search Your Book Name Here</h1>
+    <div class="input-group flex-nowrap mx-auto w-75">
+      <input
+        id="input-field"
+        type="text"
+        class="form-control"
+        placeholder="Search Your Book Name Here"
+        aria-label="Username"
+        aria-describedby="addon-wrapping"
+      />
+      <button type="button" class="btn btn-dark" onclick="searchButton()">
+        Search
+      </button>
+    </div>
+    <!-- spinner  -->
+    <div class="text-center mt-3" id="spinner">
+      <div class="text-center spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <!-- search result number container -->
+    <div id="result" class="pt-3"></div>
+    <!-- search result container -->
+    <div
+      class="row row-cols-1 row-cols-md-5 g-4 py-3"
+      id="book-container"
+    ></div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
