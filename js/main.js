@@ -1,4 +1,5 @@
 document.getElementById('spinner').style.display = "none"
+document.getElementById('error').style.display = 'none'
 const bookContainer = document.getElementById('book-container')
 const resultDiv = document.getElementById('result');
 
@@ -8,11 +9,22 @@ const searchButton = () => {
   bookContainer.innerHTML = ""
   resultDiv.innerHTML = ""
   input.value = '';
-  document.getElementById('spinner').style.display = "block"
-  const url = ` https://openlibrary.org/search.json?q=${inputFieldText}`
-  fetch(url)
-    .then(res => res.json())
-    .then(data => displayBooks(data, data.docs))
+
+  if (inputFieldText === '') {
+    document.getElementById('error').style.display = 'block'
+    bookContainer.innerHTML = ""
+    resultDiv.textContent = ""
+  }
+  else {
+    document.getElementById('error').style.display = 'none'
+    document.getElementById('spinner').style.display = "block"
+    const url = ` https://openlibrary.org/search.json?q=${inputFieldText}`
+    fetch(url)
+      .then(res => res.json())
+      .then(data => displayBooks(data, data.docs))
+  }
+
+
 }
 const displayBooks = (result, books) => {
   resultDiv.textContent = ''
@@ -36,7 +48,7 @@ const displayBooks = (result, books) => {
         </div>
         `
     bookContainer.appendChild(div)
-    document.getElementById('spinner').style.display = "none"
     // console.log(book.cover_i)
   })
+  document.getElementById('spinner').style.display = "none"
 }
